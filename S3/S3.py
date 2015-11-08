@@ -4,6 +4,7 @@
 ## License: GPL Version 2
 
 import sys
+sys.path.append('/home/adminuser/s3cfg/')
 import os, os.path
 import time
 import httplib
@@ -872,6 +873,7 @@ class S3(object):
             response["status"] = http_response.status
             response["reason"] = http_response.reason
             response["headers"] = convertTupleListToDict(http_response.getheaders())
+            response["data"] = http_response
             debug("Response: %s" % response)
         except ParameterError, e:
             raise
@@ -898,7 +900,8 @@ class S3(object):
 
         if response["status"] < 200 or response["status"] > 299:
             raise S3Error(response)
-
+        stream.close()
+        return response
         if start_position == 0:
             # Only compute MD5 on the fly if we're downloading from beginning
             # Otherwise we'd get a nonsense.

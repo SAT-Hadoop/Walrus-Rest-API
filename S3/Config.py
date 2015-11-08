@@ -107,6 +107,7 @@ class Config(object):
         return self._instance
 
     def __init__(self, configfile = None):
+	configfile = "s3cfg"
         if configfile:
             try:
                 self.read_config_file(configfile)

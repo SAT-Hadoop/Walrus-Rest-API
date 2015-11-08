@@ -545,7 +545,7 @@ class CloudFront(object):
         request['resource'] = resource
         request['headers'] = headers
         request['method'] = operation['method']
-
+        print request
         return request
 
     def sign_request(self, headers):

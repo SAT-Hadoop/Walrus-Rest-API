@@ -6,7 +6,7 @@
 ## License: GPL Version 2
 
 import sys
-
+sys.path.append('/home/adminuser/s3cfg/')
 if float("%d.%d" %(sys.version_info[0], sys.version_info[1])) < 2.4:
     sys.stderr.write("ERROR: Python 2.4 or higher required, sorry.\n")
     sys.exit(1)
@@ -52,7 +52,6 @@ def cmd_du(args):
 
 def subcmd_bucket_usage_all(s3):
     response = s3.list_all_buckets()
-
     buckets_size = 0
     for bucket in response["list"]:
         size = subcmd_bucket_usage(s3, S3Uri("s3://" + bucket["Name"]))
@@ -103,7 +102,7 @@ def cmd_ls(args):
         if uri.type == "s3" and uri.has_bucket():
             subcmd_bucket_list(s3, uri)
             return
-    subcmd_buckets_list_all(s3)
+    return subcmd_buckets_list_all(s3)
 
 def cmd_buckets_list_all_all(args):
     s3 = S3(Config())
@@ -114,7 +113,6 @@ def cmd_buckets_list_all_all(args):
         subcmd_bucket_list(s3, S3Uri("s3://" + bucket["Name"]))
         output(u"")
 
-
 def subcmd_buckets_list_all(s3):
     response = s3.list_all_buckets()
     for bucket in response["list"]:
@@ -122,6 +120,7 @@ def subcmd_buckets_list_all(s3):
             formatDateTime(bucket["CreationDate"]),
             bucket["Name"],
             ))
+    return response
 
 def subcmd_bucket_list(s3, uri):
     bucket = uri.bucket()
@@ -342,7 +341,6 @@ def cmd_object_put(args):
             os.remove(full_name)
 
 def cmd_object_get(args):
-    print args
     cfg = Config()
     s3 = S3(cfg)
 
@@ -474,7 +472,8 @@ def cmd_object_get(args):
                 debug(u"object_get failed for '%s', deleting..." % (destination,))
                 os.unlink(destination)
             raise
-
+	print response
+        return response
         if response["headers"].has_key("x-amz-meta-s3tools-gpgenc"):
             gpg_decrypt(destination, response["headers"]["x-amz-meta-s3tools-gpgenc"])
             response["size"] = os.stat(destination)[6]
@@ -2015,7 +2014,7 @@ def main():
 
     if len(args) < 1:
         error(u"Missing command. Please run with --help for more information.")
-        sys.exit(1)
+        #sys.exit(1)
 
     ## Unicodise all remaining arguments:
     args = [unicodise(arg) for arg in args]
@@ -2105,7 +2104,7 @@ if __name__ == '__main__':
 
     except ParameterError, e:
         error(u"Parameter problem: %s" % e)
-        sys.exit(1)
+        #sys.exit(1)
 
     except SystemExit, e:
         sys.exit(e.code)
@@ -2116,6 +2115,60 @@ if __name__ == '__main__':
 
     except Exception, e:
         report_exception(e)
-        sys.exit(1)
+        #sys.exit(1)
+
+
+
+cmd_ls("ls")
+
+
+from flask import Flask
+from flask import Response
+from flask import stream_with_context
+app = Flask(__name__)
+
+
+@app.route('/listall')
+def getAllBuckets():
+        print "I am in"
+        req = cmd_ls("ls")
+	#return str(cmd_ls("ls")) 
+	print req
+        return Response(stream_with_context(req.iter_content()),content_type = req.headers['content-type'])
+
+@app.route('/getobject')
+def getObject():
+	print "getting object"
+	args = []
+	args.append('s3://sat-hadoop/sai.txt')
+	args.append('.')
+	req = cmd_object_get(args)
+	#print "Printing response " + str(req)
+	#return req['data']
+	http_response = req["data"]
+	print http_response
+	def generate():
+		chunks = "saiasa"
+		while (chunks):
+			chunks = http_response.read(2048)
+			yield chunks
+	#return "downloading"
+	return Response(stream_with_context(generate()),mimetype="text/plain",headers={"Content-Disposition":"attachment;filename=test.txt"})
+
+if __name__ == '__main__':
+    app.run()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # vim:et:ts=4:sts=4:ai
