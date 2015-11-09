@@ -314,7 +314,8 @@ def cmd_object_put(args):
         seq += 1
 
         uri_final = S3Uri(local_list[key]['remote_uri'])
-
+	print "The uri final is  " 
+ 	print uri_final
         extra_headers = copy(cfg.extra_headers)
         full_name_orig = local_list[key]['full_name']
         full_name = full_name_orig

@@ -2,7 +2,7 @@
 ## Author: Michal Ludvig <michal@logix.cz>
 ##         http://www.logix.cz/michal
 ## License: GPL Version 2
-
+import binascii
 import sys
 sys.path.append('/home/adminuser/s3cfg/')
 import os, os.path
@@ -386,15 +386,21 @@ class S3(object):
         if uri.type != "s3":
             raise ValueError("Expected URI type 's3', got '%s'" % uri.type)
 
-        if filename != "-" and not os.path.isfile(filename):
-            raise InvalidFileError(u"%s is not a regular file" % unicodise(filename))
+        #if filename != "-" and not os.path.isfile(filename):
+        #    raise InvalidFileError(u"%s is not a regular file" % unicodise(filename))
         try:
             if filename == "-":
                 file = sys.stdin
                 size = 0
             else:
-                file = open(filename, "rb")
-                size = os.stat(filename)[ST_SIZE]
+                #file = open(filename, "rb")
+		file = filename
+		filename = file.filename
+		print "trying to kick add"
+		print dir(file)
+		print "done kicking ass"
+                size = file.content_length
+		#size = os.stat(filename)[ST_SIZE]
         except (IOError, OSError), e:
             raise InvalidFileError(u"%s: %s" % (unicodise(filename), e.strerror))
 
@@ -417,6 +423,7 @@ class S3(object):
             content_type = content_type + "; charset=" + content_encoding
 
         headers["content-type"] = content_type
+	headers["content-type"] = file.content_type
         if content_encoding is not None:
             headers["content-encoding"] = content_encoding
 
@@ -428,17 +435,19 @@ class S3(object):
 
         ## Multipart decision
         multipart = False
-        if not self.config.enable_multipart and filename == "-":
-            raise ParameterError("Multi-part upload is required to upload from stdin")
-        if self.config.enable_multipart:
-            if size > self.config.multipart_chunk_size_mb * 1024 * 1024 or filename == "-":
-                multipart = True
-        if multipart:
+    #    if not self.config.enable_multipart and filename.filename == "-":
+    #        raise ParameterError("Multi-part upload is required to upload from stdin")
+    #    if self.config.enable_multipart:
+    #        if size > self.config.multipart_chunk_size_mb * 1024 * 1024 or filename.filename == "-":
+    #            multipart = True
+    #    if multipart:
             # Multipart requests are quite different... drop here
-            return self.send_file_multipart(file, headers, uri, size)
+    #        return self.send_file_multipart(file, headers, uri, size)
 
         ## Not multipart...
         headers["content-length"] = size
+	print "Setting the content length : " + str(file.content_length)
+	headers["content-length"] = file.content_length
         request = self.create_request("OBJECT_PUT", uri = uri, headers = headers)
         labels = { 'source' : unicodise(filename), 'destination' : unicodise(uri.uri()), 'extra' : extra_label }
         response = self.send_file(request, file, labels)
@@ -707,10 +716,18 @@ class S3(object):
             raise S3Error(response)
 
         return response
+    def string_bin(string):
+        return ':'.join(format(ord(c), 'b') for c in string)
 
     def send_file(self, request, file, labels, buffer = '', throttle = 0, retries = _max_retries, offset = 0, chunk_size = -1):
         method_string, resource, headers = request.get_triplet()
-        size_left = size_total = headers.get("content-length")
+	print method_string
+	print resource
+	print headers	
+	#data = file.stream.read()
+	data = ':'.join(format(ord(c), 'b') for c in file.stream.read())
+        size_left = size_total =  len(data) 
+	print " I am inb here" 
         if self.config.progress_meter:
             progress = self.config.progress_class(labels, size_total)
         else:
@@ -719,7 +736,11 @@ class S3(object):
         try:
             conn = ConnMan.get(self.get_hostname(resource['bucket']))
             conn.c.putrequest(method_string, self.format_uri(resource))
+            headers['content-length'] = len(data) 
+            #headers['content-type'] = 'binary/octet-stream'
             for header in headers.keys():
+		print " Trying to print header"
+		print header + " : " + str(headers[header])
                 conn.c.putheader(header, str(headers[header]))
             conn.c.endheaders()
         except ParameterError, e:
@@ -735,23 +756,28 @@ class S3(object):
                 return self.send_file(request, file, labels, buffer, throttle, retries - 1, offset, chunk_size)
             else:
                 raise S3UploadError("Upload failed for: %s" % resource['uri'])
-        if buffer == '':
-            file.seek(offset)
+        #if buffer == '':
+        #    file.seek(offset)
         md5_hash = md5()
         try:
-            while (size_left > 0):
-                #debug("SendFile: Reading up to %d bytes from '%s' - remaining bytes: %s" % (self.config.send_chunk, file.name, size_left))
-                if buffer == '':
-                    data = file.read(min(self.config.send_chunk, size_left))
-                else:
-                    data = buffer
-                md5_hash.update(data)
-                conn.c.send(data)
-                if self.config.progress_meter:
-                    progress.update(delta_position = len(data))
-                size_left -= len(data)
-                if throttle:
-                    time.sleep(throttle)
+            #data = file.stream.read()
+            #print "I am printing the file to be uploded"
+            #print file
+            #print "file contents " + data
+            #while (size_left > 0):
+            #    #debug("SendFile: Reading up to %d bytes from '%s' - remaining bytes: %s" % (self.config.send_chunk, file.name, size_left))
+            #    if buffer == '':
+            #data = file.read(min(self.config.send_chunk, size_left))
+            #data = file.stream.read(2048)
+            #    else:
+            #        data = buffer
+            md5_hash.update(data)
+            conn.c.send(data)
+            #    if self.config.progress_meter:
+            #        progress.update(delta_position = len(data))
+            #    size_left -= len(data)
+            #    if throttle:
+            #        time.sleep(throttle)
             md5_computed = md5_hash.hexdigest()
             response = {}
             http_response = conn.c.getresponse()
@@ -761,6 +787,7 @@ class S3(object):
             response["data"] = http_response.read()
             response["size"] = size_total
             ConnMan.put(conn)
+            print response
             debug(u"Response: %s" % response)
         except ParameterError, e:
             raise

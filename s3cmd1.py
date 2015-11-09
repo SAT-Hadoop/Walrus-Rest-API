@@ -6,6 +6,8 @@
 ## License: GPL Version 2
 
 import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 sys.path.append('/home/adminuser/s3cfg/')
 if float("%d.%d" %(sys.version_info[0], sys.version_info[1])) < 2.4:
     sys.stderr.write("ERROR: Python 2.4 or higher required, sorry.\n")
@@ -264,9 +266,13 @@ def cmd_object_put(args):
 
     if len(args) == 0:
         raise ParameterError("Nothing to upload. Expecting a local file or directory and a S3 URI destination.")
+    print "arugment s pringint"
     print args
     ## Normalize URI to convert s3://bkt to s3://bkt/ (trailing slash)
-    destination_base_uri = S3Uri(args.pop())
+    pop1 = args.pop()
+    print "popping 1" 
+    print pop1
+    destination_base_uri = S3Uri(pop1)
     if destination_base_uri.type != 's3':
         raise ParameterError("Destination must be S3Uri. Got: %s" % destination_base_uri)
     destination_base = str(destination_base_uri)
@@ -274,12 +280,17 @@ def cmd_object_put(args):
     if len(args) == 0:
         raise ParameterError("Nothing to upload. Expecting a local file or directory.")
     print args
-    local_list, single_file_local = fetch_local_list(args)
+    fileobj = args.pop()
+    local_list, single_file_local = fetch_local_list(fileobj)
 
     local_list, exclude_list = filter_exclude_include(local_list)
 
     local_count = len(local_list)
-
+    local_list[fileobj.filename] = {}
+    print "printing the list" 
+    print local_list
+#    local_list[args.pop().filename] = {} 
+    #sys.exit()
     info(u"Summary: %d local files to upload" % local_count)
 
     if local_count > 0:
@@ -308,15 +319,18 @@ def cmd_object_put(args):
         warning(u"Exiting now because of --dry-run")
         return
 
+    fileName = str(args.pop())
     seq = 0
     for key in local_list:
         seq += 1
-
+	local_list[key]['remote_uri'] = destination_base + "/" + fileName
         uri_final = S3Uri(local_list[key]['remote_uri'])
-
+	print "uri_final is " 
+	print uri_final
         extra_headers = copy(cfg.extra_headers)
-        full_name_orig = local_list[key]['full_name']
-        full_name = full_name_orig
+        #full_name_orig = local_list[key]['full_name']
+        #full_name = full_name_orig
+	full_name =  fileobj
         seq_label = "[%d of %d]" % (seq, local_count)
         if Config().encrypt:
             exitcode, full_name, extra_headers["x-amz-meta-s3tools-gpgenc"] = gpg_encrypt(full_name_orig)
@@ -2123,9 +2137,13 @@ cmd_ls("ls")
 
 
 from flask import Flask
-from flask import Response
+from flask import Response, render_template, request, redirect, url_for, send_from_directory
+
 from flask import stream_with_context
 app = Flask(__name__)
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 
 @app.route('/listall')
@@ -2155,8 +2173,23 @@ def getObject():
 	#return "downloading"
 	return Response(stream_with_context(generate()),mimetype="text/plain",headers={"Content-Disposition":"attachment;filename=test.txt"})
 
+@app.route('/upload', methods=['POST'])
+def putObject():
+        file = request.files['file']
+	print dir(file)
+	print file.filename
+        args = []
+	args.append(file.filename)
+	args.append(file)
+	args.append('s3://sat-hadoop/')
+        print "The uploaded file is " + file.filename
+        req = cmd_object_put(args)
+        return "Done"
+
+
+
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=80)
 
 
 

@@ -232,9 +232,14 @@ def fetch_local_list(args, recursive = None):
 
     if recursive == None:
         recursive = cfg.recursive
-
+    print "we are here"
+    print args
     for arg in args:
-        uri = S3Uri(arg)
+        print arg
+        try:
+		uri = S3Uri(arg)
+	except:
+		uri = S3Uri(arg.filename)
         if not uri.type == 'file':
             raise ParameterError("Expecting filename or directory instead of: %s" % arg)
         if uri.isdir() and not recursive:
