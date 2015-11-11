@@ -1,0 +1,398 @@
+ERROR:root:Missing command. Please run with --help for more information.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    An unexpected error has occurred.
+  Please report the following lines to:
+   s3tools-bugs@lists.sourceforge.net
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Problem: IndexError: pop from empty list
+S3cmd:   1.5.0-alpha3
+
+Traceback (most recent call last):
+  File "s3cmd1.py", line 2113, in <module>
+    main()
+  File "s3cmd1.py", line 2037, in main
+    command = args.pop(0)
+IndexError: pop from empty list
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    An unexpected error has occurred.
+    Please report the above lines to:
+   s3tools-bugs@lists.sourceforge.net
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+2014-12-08 04:45  s3://1c41c0-download-manifests
+2015-04-15 17:54  s3://base-image
+2015-05-03 02:45  s3://benchmarking
+2014-11-10 06:12  s3://centos-6
+2015-04-10 17:27  s3://centos-7-base
+2014-12-08 04:27  s3://fedora
+2014-12-08 04:10  s3://ghostimages2
+2015-06-08 16:13  s3://hadoop
+2015-05-01 16:54  s3://hadoop-master
+2015-04-21 21:17  s3://hadoop-slave
+2015-02-03 23:31  s3://hadoopbaseimage
+2015-02-03 23:31  s3://hadoopimage
+2015-04-17 23:10  s3://hadoopnode
+2014-11-10 02:57  s3://imaging-worker-v1
+2015-07-05 23:55  s3://jobsTest
+2014-11-10 02:42  s3://loadbalancer-v1
+2015-04-15 02:51  s3://mod-ubuntu
+2015-07-03 20:08  s3://myBucket
+2015-07-18 04:18  s3://processResults
+2015-02-03 23:32  s3://saiisawesome
+2015-02-17 00:03  s3://sat-hadoop
+2015-04-24 18:00  s3://sat-jobs
+2015-04-27 18:23  s3://scheduler
+2014-11-23 01:13  s3://ubuntu
+2015-06-23 04:10  s3://ubuntu-14-04-2-base
+2014-12-08 04:37  s3://ubuntu1204
+2014-12-08 04:45  s3://ubuntu1204-ebs
+2015-06-06 05:57  s3://vagrant-builds
+getting object
+index.mp4
+s3://sat-hadoop/index.mp4 -> haha  [1 of 1]
+ 0 of 0     0% in    0s     0.00 B/s  failed
+WARNING:root:Retrying failed request: /services/Walrus/sat-hadoop/index.mp4 ('')
+WARNING:root:Waiting 3 sec...
+s3://sat-hadoop/index.mp4 -> haha  [1 of 1]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 651, in __init__
+    self.finish()
+  File "/usr/lib/python2.7/SocketServer.py", line 710, in finish
+    self.wfile.close()
+  File "/usr/lib/python2.7/socket.py", line 279, in close
+    self.flush()
+  File "/usr/lib/python2.7/socket.py", line 303, in flush
+    self._sock.sendall(view[write_offset:write_offset+buffer_size])
+error: [Errno 32] Broken pipe
+WARNING:root:Module python-magic is not available. Guessing MIME types based on file extensions.
+{'status': 200, 'headers': {'content-length': '9738617', 'last-modified': 'Tue, 10 Nov 2015 04:52:25 GMT', 'etag': '"d511605d8ab23ea98167672a62cc59fd"', 'x-amz-request-id': 'ea8b12ce-e492-4d1a-924b-498a4f49dab5', 'date': 'Wed, 11 Nov 2015 02:34:50 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8ef4045a28>}
+Printing response {'status': 200, 'headers': {'content-length': '9738617', 'last-modified': 'Tue, 10 Nov 2015 04:52:25 GMT', 'etag': '"d511605d8ab23ea98167672a62cc59fd"', 'x-amz-request-id': 'ea8b12ce-e492-4d1a-924b-498a4f49dab5', 'date': 'Wed, 11 Nov 2015 02:34:50 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8ef4045a28>}
+<httplib.HTTPResponse instance at 0x7f8ef4045a28>
+----------------------------------------
+Exception happened during processing of request from ('40.78.146.128', 4840)
+----------------------------------------
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+session5.webm
+0
+The uploaded file is session5.webm
+arugment s pringint
+[u'session5.webm', <FileStorage: u'session5.webm' ('application/octet-stream')>, 's3://sat-hadoop/']
+popping 1
+s3://sat-hadoop/
+[u'session5.webm', <FileStorage: u'session5.webm' ('application/octet-stream')>]
+we are here
+[<FileStorage: u'session5.webm' ('application/octet-stream')>]
+<FileStorage: u'session5.webm' ('application/octet-stream')>
+printing the list
+{u'session5.webm': {}}
+uri_final is 
+s3://sat-hadoop/session5.webm
+trying to kick add
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+done kicking ass
+Setting the content length : 0
+PUT
+{'bucket': None, 'uri': '/services/Walrus/sat-hadoop/session5.webm'}
+{'content-length': 0, 'content-type': 'application/octet-stream', 'Authorization': 'AWS AKITLRS5SSGOEWFTDYYI:bN+NKwVL9ND1jCzjXRgQvlMy3yk=', 'x-amz-date': 'Wed, 11 Nov 2015 03:41:01 +0000', 'content-encoding': 'UTF-8'}
+File size is  0
+ I am inb here
+session5.webm -> s3://sat-hadoop/session5.webm  [1 of 0]
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+ Trying to print header
+Authorization : AWS AKITLRS5SSGOEWFTDYYI:bN+NKwVL9ND1jCzjXRgQvlMy3yk=
+ Trying to print header
+content-encoding : UTF-8
+ Trying to print header
+content-length : 11865062
+ Trying to print header
+content-type : application/octet-stream
+ Trying to print header
+x-amz-date : Wed, 11 Nov 2015 03:41:01 +0000
+{'status': 200, 'headers': {'date': 'Wed, 11 Nov 2015 03:41:02 GMT', 'content-length': '0', 'etag': '"bba49e4f39c7f7bcac76ac2321c921fe"', 'x-amz-request-id': 'a3fba529-86b5-48d1-bcd5-b64dc80ab0b2'}, 'reason': 'OK', 'data': '', 'size': 11865062}
+        0 of 11865062     0% in    0s     0.00 B/s        0 of 11865062     0% in    0s     0.00 B/s  done
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+winscp574setup.exe
+0
+The uploaded file is winscp574setup.exe
+arugment s pringint
+[u'winscp574setup.exe', <FileStorage: u'winscp574setup.exe' ('application/x-msdownload')>, 's3://sat-hadoop/']
+popping 1
+s3://sat-hadoop/
+[u'winscp574setup.exe', <FileStorage: u'winscp574setup.exe' ('application/x-msdownload')>]
+we are here
+[<FileStorage: u'winscp574setup.exe' ('application/x-msdownload')>]
+<FileStorage: u'winscp574setup.exe' ('application/x-msdownload')>
+printing the list
+{u'winscp574setup.exe': {}}
+uri_final is 
+s3://sat-hadoop/winscp574setup.exe
+trying to kick add
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+done kicking ass
+Setting the content length : 0
+PUT
+{'bucket': None, 'uri': '/services/Walrus/sat-hadoop/winscp574setup.exe'}
+{'content-length': 0, 'content-type': 'application/x-msdownload', 'Authorization': 'AWS AKITLRS5SSGOEWFTDYYI:uMiK6/VJtm1/WO/NgmRMafeZ8Wo=', 'x-amz-date': 'Wed, 11 Nov 2015 03:43:17 +0000', 'content-encoding': 'UTF-8'}
+File size is  0
+ I am inb here
+winscp574setup.exe -> s3://sat-hadoop/winscp574setup.exe  [1 of 0]
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+ Trying to print header
+Authorization : AWS AKITLRS5SSGOEWFTDYYI:uMiK6/VJtm1/WO/NgmRMafeZ8Wo=
+ Trying to print header
+content-encoding : UTF-8
+ Trying to print header
+content-length : 5817448
+ Trying to print header
+content-type : application/x-msdownload
+ Trying to print header
+x-amz-date : Wed, 11 Nov 2015 03:43:17 +0000
+       0 of 5817448     0% in    0s     0.00 B/s  failed
+WARNING:root:Upload failed: /services/Walrus/sat-hadoop/winscp574setup.exe ([Errno 32] Broken pipe)
+WARNING:root:Retrying on lower speed (throttle=0.00)
+WARNING:root:Waiting 3 sec...
+PUT
+{'bucket': None, 'uri': '/services/Walrus/sat-hadoop/winscp574setup.exe'}
+{'content-length': 5817448, 'content-type': 'application/x-msdownload', 'Authorization': 'AWS AKITLRS5SSGOEWFTDYYI:y36ONb3f6iKK6Rvp2oEEt2JyRv4=', 'x-amz-date': 'Wed, 11 Nov 2015 03:43:20 +0000', 'content-encoding': 'UTF-8'}
+File size is  0
+ I am inb here
+winscp574setup.exe -> s3://sat-hadoop/winscp574setup.exe  [1 of 0]
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+ Trying to print header
+Authorization : AWS AKITLRS5SSGOEWFTDYYI:y36ONb3f6iKK6Rvp2oEEt2JyRv4=
+ Trying to print header
+content-encoding : UTF-8
+ Trying to print header
+content-length : 0
+ Trying to print header
+content-type : application/x-msdownload
+ Trying to print header
+x-amz-date : Wed, 11 Nov 2015 03:43:20 +0000
+{'status': 200, 'headers': {'date': 'Wed, 11 Nov 2015 03:43:21 GMT', 'content-length': '0', 'etag': '"d41d8cd98f00b204e9800998ecf8427e"', 'x-amz-request-id': '747af203-d6b2-4d33-a9e9-4c2673d239b8'}, 'reason': 'OK', 'data': '', 'size': 0}
+ 0 of 0     0% in    0s     0.00 B/s 0 of 0     0% in    0s     0.00 B/s  done
+getting object
+session5.webm
+s3://sat-hadoop/session5.webm -> haha  [1 of 1]
+ 0 of 0     0% in    0s     0.00 B/s  failed
+WARNING:root:Retrying failed request: /services/Walrus/sat-hadoop/session5.webm ('')
+WARNING:root:Waiting 3 sec...
+s3://sat-hadoop/session5.webm -> haha  [1 of 1]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 651, in __init__
+    self.finish()
+  File "/usr/lib/python2.7/SocketServer.py", line 710, in finish
+    self.wfile.close()
+  File "/usr/lib/python2.7/socket.py", line 279, in close
+    self.flush()
+  File "/usr/lib/python2.7/socket.py", line 303, in flush
+    self._sock.sendall(view[write_offset:write_offset+buffer_size])
+error: [Errno 32] Broken pipe
+{'status': 200, 'headers': {'content-length': '11865062', 'last-modified': 'Wed, 11 Nov 2015 03:41:02 GMT', 'etag': '"bba49e4f39c7f7bcac76ac2321c921fe"', 'x-amz-request-id': '7e4526e7-4b44-43c0-9598-99fe120afeb1', 'date': 'Wed, 11 Nov 2015 03:49:01 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8ef403ea28>}
+Printing response {'status': 200, 'headers': {'content-length': '11865062', 'last-modified': 'Wed, 11 Nov 2015 03:41:02 GMT', 'etag': '"bba49e4f39c7f7bcac76ac2321c921fe"', 'x-amz-request-id': '7e4526e7-4b44-43c0-9598-99fe120afeb1', 'date': 'Wed, 11 Nov 2015 03:49:01 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8ef403ea28>}
+<httplib.HTTPResponse instance at 0x7f8ef403ea28>
+----------------------------------------
+Exception happened during processing of request from ('172.56.13.163', 53815)
+----------------------------------------
+getting object
+session5.webm
+s3://sat-hadoop/session5.webm -> haha  [1 of 1]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 651, in __init__
+    self.finish()
+  File "/usr/lib/python2.7/SocketServer.py", line 710, in finish
+    self.wfile.close()
+  File "/usr/lib/python2.7/socket.py", line 279, in close
+    self.flush()
+  File "/usr/lib/python2.7/socket.py", line 303, in flush
+    self._sock.sendall(view[write_offset:write_offset+buffer_size])
+error: [Errno 32] Broken pipe
+{'status': 200, 'headers': {'content-length': '11865062', 'last-modified': 'Wed, 11 Nov 2015 03:41:02 GMT', 'etag': '"bba49e4f39c7f7bcac76ac2321c921fe"', 'x-amz-request-id': 'ad072f85-afe7-40ad-9945-33e75d5f932c', 'date': 'Wed, 11 Nov 2015 03:49:20 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8ef403ec20>}
+Printing response {'status': 200, 'headers': {'content-length': '11865062', 'last-modified': 'Wed, 11 Nov 2015 03:41:02 GMT', 'etag': '"bba49e4f39c7f7bcac76ac2321c921fe"', 'x-amz-request-id': 'ad072f85-afe7-40ad-9945-33e75d5f932c', 'date': 'Wed, 11 Nov 2015 03:49:20 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8ef403ec20>}
+<httplib.HTTPResponse instance at 0x7f8ef403ec20>
+----------------------------------------
+Exception happened during processing of request from ('172.56.13.163', 32542)
+----------------------------------------
+getting object
+session5.webm
+s3://sat-hadoop/session5.webm -> haha  [1 of 1]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 651, in __init__
+    self.finish()
+  File "/usr/lib/python2.7/SocketServer.py", line 710, in finish
+    self.wfile.close()
+  File "/usr/lib/python2.7/socket.py", line 279, in close
+    self.flush()
+  File "/usr/lib/python2.7/socket.py", line 303, in flush
+    self._sock.sendall(view[write_offset:write_offset+buffer_size])
+error: [Errno 32] Broken pipe
+{'status': 200, 'headers': {'content-length': '11865062', 'last-modified': 'Wed, 11 Nov 2015 03:41:02 GMT', 'etag': '"bba49e4f39c7f7bcac76ac2321c921fe"', 'x-amz-request-id': 'b6703776-06df-4b63-a0af-260b4942a7a3', 'date': 'Wed, 11 Nov 2015 03:50:20 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8ef403e0e0>}
+Printing response {'status': 200, 'headers': {'content-length': '11865062', 'last-modified': 'Wed, 11 Nov 2015 03:41:02 GMT', 'etag': '"bba49e4f39c7f7bcac76ac2321c921fe"', 'x-amz-request-id': 'b6703776-06df-4b63-a0af-260b4942a7a3', 'date': 'Wed, 11 Nov 2015 03:50:20 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8ef403e0e0>}
+<httplib.HTTPResponse instance at 0x7f8ef403e0e0>
+----------------------------------------
+Exception happened during processing of request from ('172.56.13.163', 27609)
+----------------------------------------
+getting object
+session5.webm
+s3://sat-hadoop/session5.webm -> haha  [1 of 1]
+{'status': 200, 'headers': {'content-length': '11865062', 'last-modified': 'Wed, 11 Nov 2015 03:41:02 GMT', 'etag': '"bba49e4f39c7f7bcac76ac2321c921fe"', 'x-amz-request-id': 'bd9fc283-867c-4dc6-bbfc-77a3c9dc3f10', 'date': 'Wed, 11 Nov 2015 03:51:29 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8ef403ecf8>}
+Printing response {'status': 200, 'headers': {'content-length': '11865062', 'last-modified': 'Wed, 11 Nov 2015 03:41:02 GMT', 'etag': '"bba49e4f39c7f7bcac76ac2321c921fe"', 'x-amz-request-id': 'bd9fc283-867c-4dc6-bbfc-77a3c9dc3f10', 'date': 'Wed, 11 Nov 2015 03:51:29 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8ef403ecf8>}
+<httplib.HTTPResponse instance at 0x7f8ef403ecf8>
+getting object
+session5.webm
+s3://sat-hadoop/session5.webm -> haha  [1 of 1]
+{'status': 200, 'headers': {'content-length': '11865062', 'last-modified': 'Wed, 11 Nov 2015 03:41:02 GMT', 'etag': '"bba49e4f39c7f7bcac76ac2321c921fe"', 'x-amz-request-id': '04e0b501-0d00-4e6c-93c2-7b06af916e03', 'date': 'Wed, 11 Nov 2015 03:51:42 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8eeefcc290>}
+Printing response {'status': 200, 'headers': {'content-length': '11865062', 'last-modified': 'Wed, 11 Nov 2015 03:41:02 GMT', 'etag': '"bba49e4f39c7f7bcac76ac2321c921fe"', 'x-amz-request-id': '04e0b501-0d00-4e6c-93c2-7b06af916e03', 'date': 'Wed, 11 Nov 2015 03:51:42 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8eeefcc290>}
+<httplib.HTTPResponse instance at 0x7f8eeefcc290>
+getting object
+session5.webm
+s3://sat-hadoop/session5.webm -> haha  [1 of 1]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 651, in __init__
+    self.finish()
+  File "/usr/lib/python2.7/SocketServer.py", line 710, in finish
+    self.wfile.close()
+  File "/usr/lib/python2.7/socket.py", line 279, in close
+    self.flush()
+  File "/usr/lib/python2.7/socket.py", line 303, in flush
+    self._sock.sendall(view[write_offset:write_offset+buffer_size])
+error: [Errno 32] Broken pipe
+{'status': 200, 'headers': {'content-length': '11865062', 'last-modified': 'Wed, 11 Nov 2015 03:41:02 GMT', 'etag': '"bba49e4f39c7f7bcac76ac2321c921fe"', 'x-amz-request-id': 'ae9edf17-0f81-4b3d-9078-872caddc1dad', 'date': 'Wed, 11 Nov 2015 03:53:28 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8eeefcc320>}
+Printing response {'status': 200, 'headers': {'content-length': '11865062', 'last-modified': 'Wed, 11 Nov 2015 03:41:02 GMT', 'etag': '"bba49e4f39c7f7bcac76ac2321c921fe"', 'x-amz-request-id': 'ae9edf17-0f81-4b3d-9078-872caddc1dad', 'date': 'Wed, 11 Nov 2015 03:53:28 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8eeefcc320>}
+<httplib.HTTPResponse instance at 0x7f8eeefcc320>
+----------------------------------------
+Exception happened during processing of request from ('172.56.13.163', 31452)
+----------------------------------------
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+session8.webm
+0
+The uploaded file is session8.webm
+arugment s pringint
+[u'session8.webm', <FileStorage: u'session8.webm' ('application/octet-stream')>, 's3://sat-hadoop/']
+popping 1
+s3://sat-hadoop/
+[u'session8.webm', <FileStorage: u'session8.webm' ('application/octet-stream')>]
+we are here
+[<FileStorage: u'session8.webm' ('application/octet-stream')>]
+<FileStorage: u'session8.webm' ('application/octet-stream')>
+printing the list
+{u'session8.webm': {}}
+uri_final is 
+s3://sat-hadoop/session8.webm
+trying to kick add
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+done kicking ass
+Setting the content length : 0
+PUT
+{'bucket': None, 'uri': '/services/Walrus/sat-hadoop/session8.webm'}
+{'content-length': 0, 'content-type': 'application/octet-stream', 'Authorization': 'AWS AKITLRS5SSGOEWFTDYYI:DiTLgjZaazojKuK5ccJULAZkr68=', 'x-amz-date': 'Wed, 11 Nov 2015 04:01:34 +0000', 'content-encoding': 'UTF-8'}
+File size is  0
+ I am inb here
+session8.webm -> s3://sat-hadoop/session8.webm  [1 of 0]
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+ Trying to print header
+Authorization : AWS AKITLRS5SSGOEWFTDYYI:DiTLgjZaazojKuK5ccJULAZkr68=
+ Trying to print header
+content-encoding : UTF-8
+ Trying to print header
+content-length : 6483071
+ Trying to print header
+content-type : application/octet-stream
+ Trying to print header
+x-amz-date : Wed, 11 Nov 2015 04:01:34 +0000
+{'status': 200, 'headers': {'date': 'Wed, 11 Nov 2015 04:01:35 GMT', 'content-length': '0', 'etag': '"0e752a7b75129117c99b294089120609"', 'x-amz-request-id': '0eadac88-e17b-4dc3-a9e7-89eda317758c'}, 'reason': 'OK', 'data': '', 'size': 6483071}
+       0 of 6483071     0% in    0s     0.00 B/s       0 of 6483071     0% in    0s     0.00 B/s  done
+getting object
+session8.webm
+s3://sat-hadoop/session8.webm -> haha  [1 of 1]
+ 0 of 0     0% in    0s     0.00 B/s  failed
+WARNING:root:Retrying failed request: /services/Walrus/sat-hadoop/session8.webm ('')
+WARNING:root:Waiting 3 sec...
+s3://sat-hadoop/session8.webm -> haha  [1 of 1]
+{'status': 200, 'headers': {'content-length': '6483071', 'last-modified': 'Wed, 11 Nov 2015 04:01:35 GMT', 'etag': '"0e752a7b75129117c99b294089120609"', 'x-amz-request-id': '53ffd004-4ede-4ea7-a1c4-3ebb4e8e4c0f', 'date': 'Wed, 11 Nov 2015 04:03:32 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8eeefcc710>}
+Printing response {'status': 200, 'headers': {'content-length': '6483071', 'last-modified': 'Wed, 11 Nov 2015 04:01:35 GMT', 'etag': '"0e752a7b75129117c99b294089120609"', 'x-amz-request-id': '53ffd004-4ede-4ea7-a1c4-3ebb4e8e4c0f', 'date': 'Wed, 11 Nov 2015 04:03:32 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8eeefcc710>}
+<httplib.HTTPResponse instance at 0x7f8eeefcc710>
+getting object
+session8.webm
+s3://sat-hadoop/session8.webm -> haha  [1 of 1]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 651, in __init__
+    self.finish()
+  File "/usr/lib/python2.7/SocketServer.py", line 710, in finish
+    self.wfile.close()
+  File "/usr/lib/python2.7/socket.py", line 279, in close
+    self.flush()
+  File "/usr/lib/python2.7/socket.py", line 303, in flush
+    self._sock.sendall(view[write_offset:write_offset+buffer_size])
+error: [Errno 32] Broken pipe
+{'status': 200, 'headers': {'content-length': '6483071', 'last-modified': 'Wed, 11 Nov 2015 04:01:35 GMT', 'etag': '"0e752a7b75129117c99b294089120609"', 'x-amz-request-id': 'bb3c3eff-585d-40c6-a3e2-08845cb93e65', 'date': 'Wed, 11 Nov 2015 04:04:32 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8eeefcc950>}
+Printing response {'status': 200, 'headers': {'content-length': '6483071', 'last-modified': 'Wed, 11 Nov 2015 04:01:35 GMT', 'etag': '"0e752a7b75129117c99b294089120609"', 'x-amz-request-id': 'bb3c3eff-585d-40c6-a3e2-08845cb93e65', 'date': 'Wed, 11 Nov 2015 04:04:32 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8eeefcc950>}
+<httplib.HTTPResponse instance at 0x7f8eeefcc950>
+----------------------------------------
+Exception happened during processing of request from ('99.32.17.177', 51704)
+----------------------------------------
+getting object
+session8.webm
+s3://sat-hadoop/session8.webm -> haha  [1 of 1]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 651, in __init__
+    self.finish()
+  File "/usr/lib/python2.7/SocketServer.py", line 710, in finish
+    self.wfile.close()
+  File "/usr/lib/python2.7/socket.py", line 279, in close
+    self.flush()
+  File "/usr/lib/python2.7/socket.py", line 303, in flush
+    self._sock.sendall(view[write_offset:write_offset+buffer_size])
+error: [Errno 32] Broken pipe
+{'status': 200, 'headers': {'content-length': '6483071', 'last-modified': 'Wed, 11 Nov 2015 04:01:35 GMT', 'etag': '"0e752a7b75129117c99b294089120609"', 'x-amz-request-id': '5e168934-d84a-4c29-adfc-1471c535bba3', 'date': 'Wed, 11 Nov 2015 04:05:03 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8eeefcc8c0>}
+Printing response {'status': 200, 'headers': {'content-length': '6483071', 'last-modified': 'Wed, 11 Nov 2015 04:01:35 GMT', 'etag': '"0e752a7b75129117c99b294089120609"', 'x-amz-request-id': '5e168934-d84a-4c29-adfc-1471c535bba3', 'date': 'Wed, 11 Nov 2015 04:05:03 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8eeefcc8c0>}
+<httplib.HTTPResponse instance at 0x7f8eeefcc8c0>
+----------------------------------------
+Exception happened during processing of request from ('99.32.17.177', 51717)
+----------------------------------------
+getting object
+index2.mp4
+s3://sat-hadoop/index2.mp4 -> haha  [1 of 1]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 651, in __init__
+    self.finish()
+  File "/usr/lib/python2.7/SocketServer.py", line 710, in finish
+    self.wfile.close()
+  File "/usr/lib/python2.7/socket.py", line 279, in close
+    self.flush()
+  File "/usr/lib/python2.7/socket.py", line 303, in flush
+    self._sock.sendall(view[write_offset:write_offset+buffer_size])
+error: [Errno 32] Broken pipe

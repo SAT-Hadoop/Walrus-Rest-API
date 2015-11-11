@@ -6,6 +6,7 @@
 ## License: GPL Version 2
 
 import sys
+import time
 reload(sys)
 sys.setdefaultencoding("utf-8")
 sys.path.append('/home/adminuser/s3cfg/')
@@ -323,7 +324,7 @@ def cmd_object_put(args):
     seq = 0
     for key in local_list:
         seq += 1
-	local_list[key]['remote_uri'] = destination_base + "/" + fileName
+	local_list[key]['remote_uri'] = destination_base + fileName
         uri_final = S3Uri(local_list[key]['remote_uri'])
 	print "uri_final is " 
 	print uri_final
@@ -453,34 +454,34 @@ def cmd_object_get(args):
             ## File
             try:
                 file_exists = os.path.exists(destination)
-                try:
-                    dst_stream = open(destination, "ab")
-                except IOError, e:
-                    if e.errno == errno.ENOENT:
-                        basename = destination[:destination.rindex(os.path.sep)]
-                        info(u"Creating directory: %s" % basename)
-                        os.makedirs(basename)
-                        dst_stream = open(destination, "ab")
-                    else:
-                        raise
-                if file_exists:
-                    if Config().get_continue:
-                        start_position = dst_stream.tell()
-                    elif Config().force:
-                        start_position = 0L
-                        dst_stream.seek(0L)
-                        dst_stream.truncate()
-                    elif Config().skip_existing:
-                        info(u"Skipping over existing file: %s" % (destination))
-                        continue
-                    else:
-                        dst_stream.close()
-                        raise ParameterError(u"File %s already exists. Use either of --force / --continue / --skip-existing or give it a new name." % destination)
+                #try:
+                #    dst_stream = open(destination, "ab")
+                #except IOError, e:
+                #    if e.errno == errno.ENOENT:
+                #        basename = destination[:destination.rindex(os.path.sep)]
+                #        info(u"Creating directory: %s" % basename)
+                #        os.makedirs(basename)
+                #        dst_stream = open(destination, "ab")
+                #    else:
+                #        raise
+                #if file_exists:
+                #    if Config().get_continue:
+                #        start_position = dst_stream.tell()
+                #    elif Config().force:
+                #        start_position = 0L
+                #        dst_stream.seek(0L)
+                #        dst_stream.truncate()
+                #    elif Config().skip_existing:
+                #        info(u"Skipping over existing file: %s" % (destination))
+                #        continue
+                #    else:
+                #        dst_stream.close()
+                #        raise ParameterError(u"File %s already exists. Use either of --force / --continue / --skip-existing or give it a new name." % destination)
             except IOError, e:
                 error(u"Skipping %s: %s" % (destination, e.strerror))
                 continue
         try:
-            response = s3.object_get(uri, dst_stream, start_position = start_position, extra_label = seq_label)
+            response = s3.object_get(uri, "sai sif", start_position = start_position, extra_label = seq_label)
         except S3Error, e:
             if not file_exists: # Delete, only if file didn't exist before!
                 debug(u"object_get failed for '%s', deleting..." % (destination,))
@@ -2157,11 +2158,13 @@ def getAllBuckets():
 @app.route('/getobject')
 def getObject():
 	print "getting object"
-	args = []
-	args.append('s3://sat-hadoop/sai.txt')
+	objectname = request.args.get('objectname')
+        print objectname
+        args = []
+        args.append('s3://sat-hadoop/'+str(objectname))
 	args.append('.')
 	req = cmd_object_get(args)
-	#print "Printing response " + str(req)
+	print "Printing response " + str(req)
 	#return req['data']
 	http_response = req["data"]
 	print http_response
@@ -2171,13 +2174,39 @@ def getObject():
 			chunks = http_response.read(2048)
 			yield chunks
 	#return "downloading"
-	return Response(stream_with_context(generate()),mimetype="text/plain",headers={"Content-Disposition":"attachment;filename=test.txt"})
+	#return Response(stream_with_context(generate()),mimetype="text/plain",headers={"Content-Disposition":"attachment;filename=test.txt"})
+	return Response(stream_with_context(generate()),headers ={'Connection': 'keep-alive',"Content-Disposition":"attachment;filename="+objectname})
+@app.route('/streamobject')
+def streamObject():
+        print "getting object"
+	objectname = request.args.get('objectname') 
+	print objectname
+        args = []
+        args.append('s3://sat-hadoop/'+str(objectname))
+        args.append('.')
+        req = cmd_object_get(args)
+        print "Printing response " + str(req)
+        #return req['data']
+        http_response = req["data"]
+        print http_response
+        def generate():
+		#yield http_response.read()
+                chunks = "saiasa"
+                while (chunks):
+                        chunks = http_response.read(2047)
+                        yield chunks
+		#	time.sleep(1)
+        #return "downloading"
+        return Response(stream_with_context(generate()),headers ={'Transfer-Encoding':'chunked'})
+
+
 
 @app.route('/upload', methods=['POST'])
 def putObject():
         file = request.files['file']
 	print dir(file)
 	print file.filename
+	print file.content_length
         args = []
 	args.append(file.filename)
 	args.append(file)
@@ -2189,7 +2218,7 @@ def putObject():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run(threaded=True,host='0.0.0.0', port=80)
 
 
 

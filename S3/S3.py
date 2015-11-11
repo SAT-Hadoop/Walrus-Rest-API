@@ -457,7 +457,7 @@ class S3(object):
         if uri.type != "s3":
             raise ValueError("Expected URI type 's3', got '%s'" % uri.type)
         request = self.create_request("OBJECT_GET", uri = uri)
-        labels = { 'source' : unicodise(uri.uri()), 'destination' : unicodise(stream.name), 'extra' : extra_label }
+        labels = { 'source' : unicodise(uri.uri()), 'destination' : unicodise("haha"), 'extra' : extra_label }
         response = self.recv_file(request, stream, labels, start_position)
         return response
 
@@ -724,8 +724,9 @@ class S3(object):
 	print method_string
 	print resource
 	print headers	
-	#data = file.stream.read()
-	data = ':'.join(format(ord(c), 'b') for c in file.stream.read())
+	print "File size is  " + str(file.content_length)
+	data = file.stream.read()
+	#data = ':'.join(format(ord(c), 'b') for c in file.stream.read())
         size_left = size_total =  len(data) 
 	print " I am inb here" 
         if self.config.progress_meter:
@@ -736,6 +737,7 @@ class S3(object):
         try:
             conn = ConnMan.get(self.get_hostname(resource['bucket']))
             conn.c.putrequest(method_string, self.format_uri(resource))
+            print dir(file)
             headers['content-length'] = len(data) 
             #headers['content-type'] = 'binary/octet-stream'
             for header in headers.keys():
@@ -884,7 +886,7 @@ class S3(object):
         if self.config.progress_meter:
             progress = self.config.progress_class(labels, 0)
         else:
-            info("Receiving file '%s', please wait..." % stream.name)
+            info("Receiving file" )
         timestamp_start = time.time()
         try:
             conn = ConnMan.get(self.get_hostname(resource['bucket']))
@@ -927,7 +929,7 @@ class S3(object):
 
         if response["status"] < 200 or response["status"] > 299:
             raise S3Error(response)
-        stream.close()
+        #stream.close()
         return response
         if start_position == 0:
             # Only compute MD5 on the fly if we're downloading from beginning
