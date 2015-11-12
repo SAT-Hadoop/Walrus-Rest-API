@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#/usr/bin/python
 
 ## Amazon S3 manager
 ## Author: Michal Ludvig <michal@logix.cz>
@@ -103,8 +103,7 @@ def cmd_ls(args):
     if len(args) > 0:
         uri = S3Uri(args[0])
         if uri.type == "s3" and uri.has_bucket():
-            subcmd_bucket_list(s3, uri)
-            return
+            return subcmd_bucket_list(s3, uri)
     return subcmd_buckets_list_all(s3)
 
 def cmd_buckets_list_all_all(args):
@@ -157,7 +156,7 @@ def subcmd_bucket_list(s3, uri):
             "coeff": "",
             "md5": "",
             "uri": uri.compose_uri(bucket, prefixprefix)})
-
+    return response['list']
     for object in response["list"]:
         size, size_coeff = formatSize(object["Size"], Config().human_readable_sizes)
         output(format_string % {
@@ -2150,10 +2149,12 @@ def index():
 @app.route('/listall')
 def getAllBuckets():
         print "I am in"
-        req = cmd_ls("ls")
-	#return str(cmd_ls("ls")) 
-	print req
-        return Response(stream_with_context(req.iter_content()),content_type = req.headers['content-type'])
+	args = []
+	args.append("s3://sat-hadoop")
+	print "I am here"
+	return str(cmd_ls(args)) 
+	#print req
+        #return Response(stream_with_context(req.iter_content()),content_type = req.headers['content-type'])
 
 @app.route('/getobject')
 def getObject():

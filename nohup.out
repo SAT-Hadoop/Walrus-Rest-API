@@ -396,3 +396,94 @@ Traceback (most recent call last):
   File "/usr/lib/python2.7/socket.py", line 303, in flush
     self._sock.sendall(view[write_offset:write_offset+buffer_size])
 error: [Errno 32] Broken pipe
+{'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': '9c496389-c823-4dc7-ae14-abd840ba0042', 'date': 'Wed, 11 Nov 2015 04:19:17 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8eeefcce60>}
+Printing response {'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': '9c496389-c823-4dc7-ae14-abd840ba0042', 'date': 'Wed, 11 Nov 2015 04:19:17 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f8eeefcce60>}
+<httplib.HTTPResponse instance at 0x7f8eeefcce60>
+----------------------------------------
+Exception happened during processing of request from ('172.56.13.163', 43885)
+----------------------------------------
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+VirtualBox_-_Ubuntu-14.10-Desktop_VDI-[VirtualBoxImages.com].rar
+0
+The uploaded file is VirtualBox_-_Ubuntu-14.10-Desktop_VDI-[VirtualBoxImages.com].rar
+arugment s pringint
+[u'VirtualBox_-_Ubuntu-14.10-Desktop_VDI-[VirtualBoxImages.com].rar', <FileStorage: u'VirtualBox_-_Ubuntu-14.10-Desktop_VDI-[VirtualBoxImages.com].rar' ('application/octet-stream')>, 's3://sat-hadoop/']
+popping 1
+s3://sat-hadoop/
+[u'VirtualBox_-_Ubuntu-14.10-Desktop_VDI-[VirtualBoxImages.com].rar', <FileStorage: u'VirtualBox_-_Ubuntu-14.10-Desktop_VDI-[VirtualBoxImages.com].rar' ('application/octet-stream')>]
+we are here
+[<FileStorage: u'VirtualBox_-_Ubuntu-14.10-Desktop_VDI-[VirtualBoxImages.com].rar' ('application/octet-stream')>]
+<FileStorage: u'VirtualBox_-_Ubuntu-14.10-Desktop_VDI-[VirtualBoxImages.com].rar' ('application/octet-stream')>
+printing the list
+{u'VirtualBox_-_Ubuntu-14.10-Desktop_VDI-[VirtualBoxImages.com].rar': {}}
+uri_final is 
+s3://sat-hadoop/VirtualBox_-_Ubuntu-14.10-Desktop_VDI-[VirtualBoxImages.com].rar
+trying to kick add
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+done kicking ass
+Setting the content length : 0
+PUT
+{'bucket': None, 'uri': '/services/Walrus/sat-hadoop/VirtualBox_-_Ubuntu-14.10-Desktop_VDI-[VirtualBoxImages.com].rar'}
+{'content-length': 0, 'content-type': 'application/octet-stream', 'Authorization': 'AWS AKITLRS5SSGOEWFTDYYI:sYW0nbCwltxL2SlnmGR+HSXJ16Y=', 'x-amz-date': 'Wed, 11 Nov 2015 21:49:09 +0000', 'content-encoding': 'UTF-8'}
+File size is  0
+ I am inb here
+VirtualBox_-_Ubuntu-14.10-Desktop_VDI-[VirtualBoxImages.com].rar -> s3://sat-hadoop/VirtualBox_-_Ubuntu-14.10-Desktop_VDI-[VirtualBoxImages.com].rar  [1 of 0]
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+ Trying to print header
+Authorization : AWS AKITLRS5SSGOEWFTDYYI:sYW0nbCwltxL2SlnmGR+HSXJ16Y=
+ Trying to print header
+content-encoding : UTF-8
+ Trying to print header
+content-length : 1343360973
+ Trying to print header
+content-type : application/octet-stream
+ Trying to print header
+x-amz-date : Wed, 11 Nov 2015 21:49:09 +0000
+{'status': 200, 'headers': {'date': 'Wed, 11 Nov 2015 21:49:45 GMT', 'content-length': '0', 'etag': '"89d4033e28d007cb5fecdf9d5dd30900"', 'x-amz-request-id': '96e4e410-ea03-4572-899a-e719d6df1051'}, 'reason': 'OK', 'data': '', 'size': 1343360973}
+          0 of 1343360973     0% in   34s     0.00 B/s          0 of 1343360973     0% in   34s     0.00 B/s  done
+WARNING:root:Retrying failed request: /services/Walrus/ ('')
+WARNING:root:Waiting 3 sec...
+I am in
+2014-12-08 04:45  s3://1c41c0-download-manifests
+2015-04-15 17:54  s3://base-image
+2015-05-03 02:45  s3://benchmarking
+2014-11-10 06:12  s3://centos-6
+2015-04-10 17:27  s3://centos-7-base
+2014-12-08 04:27  s3://fedora
+2014-12-08 04:10  s3://ghostimages2
+2015-06-08 16:13  s3://hadoop
+2015-05-01 16:54  s3://hadoop-master
+2015-04-21 21:17  s3://hadoop-slave
+2015-02-03 23:31  s3://hadoopbaseimage
+2015-02-03 23:31  s3://hadoopimage
+2015-04-17 23:10  s3://hadoopnode
+2014-11-10 02:57  s3://imaging-worker-v1
+2015-07-05 23:55  s3://jobsTest
+2014-11-10 02:42  s3://loadbalancer-v1
+2015-04-15 02:51  s3://mod-ubuntu
+2015-07-03 20:08  s3://myBucket
+2015-07-18 04:18  s3://processResults
+2015-02-03 23:32  s3://saiisawesome
+2015-02-17 00:03  s3://sat-hadoop
+2015-04-24 18:00  s3://sat-jobs
+2015-04-27 18:23  s3://scheduler
+2014-11-23 01:13  s3://ubuntu
+2015-06-23 04:10  s3://ubuntu-14-04-2-base
+2014-12-08 04:37  s3://ubuntu1204
+2014-12-08 04:45  s3://ubuntu1204-ebs
+2015-06-06 05:57  s3://vagrant-builds
+{'status': 200, 'headers': {'date': 'Wed, 11 Nov 2015 23:48:53 GMT', 'content-length': '2931', 'x-amz-request-id': '1ca26f58-61d1-4e33-81f9-e5ac5ee0bd50', 'content-type': 'application/xml'}, 'reason': 'OK', 'data': '<?xml version="1.0" encoding="UTF-8" ?><ListAllMyBucketsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Owner><ID>4a3556481c30204e1e21e294af5e62244c492f1b5160341824d2924243050c05</ID><DisplayName>eucalyptus</DisplayName></Owner><Buckets><Bucket><Name>1c41c0-download-manifests</Name><CreationDate>2014-12-08T04:45:32.833Z</CreationDate></Bucket><Bucket><Name>base-image</Name><CreationDate>2015-04-15T17:54:53.081Z</CreationDate></Bucket><Bucket><Name>benchmarking</Name><CreationDate>2015-05-03T02:45:05.044Z</CreationDate></Bucket><Bucket><Name>centos-6</Name><CreationDate>2014-11-10T06:12:21.646Z</CreationDate></Bucket><Bucket><Name>centos-7-base</Name><CreationDate>2015-04-10T17:27:33.508Z</CreationDate></Bucket><Bucket><Name>fedora</Name><CreationDate>2014-12-08T04:27:42.621Z</CreationDate></Bucket><Bucket><Name>ghostimages2</Name><CreationDate>2014-12-08T04:10:57.959Z</CreationDate></Bucket><Bucket><Name>hadoop</Name><CreationDate>2015-06-08T16:13:09.997Z</CreationDate></Bucket><Bucket><Name>hadoop-master</Name><CreationDate>2015-05-01T16:54:51.529Z</CreationDate></Bucket><Bucket><Name>hadoop-slave</Name><CreationDate>2015-04-21T21:17:03.508Z</CreationDate></Bucket><Bucket><Name>hadoopbaseimage</Name><CreationDate>2015-02-03T23:31:11.176Z</CreationDate></Bucket><Bucket><Name>hadoopimage</Name><CreationDate>2015-02-03T23:31:40.169Z</CreationDate></Bucket><Bucket><Name>hadoopnode</Name><CreationDate>2015-04-17T23:10:10.722Z</CreationDate></Bucket><Bucket><Name>imaging-worker-v1</Name><CreationDate>2014-11-10T02:57:03.574Z</CreationDate></Bucket><Bucket><Name>jobsTest</Name><CreationDate>2015-07-05T23:55:19.554Z</CreationDate></Bucket><Bucket><Name>loadbalancer-v1</Name><CreationDate>2014-11-10T02:42:22.172Z</CreationDate></Bucket><Bucket><Name>mod-ubuntu</Name><CreationDate>2015-04-15T02:51:12.053Z</CreationDate></Bucket><Bucket><Name>myBucket</Name><CreationDate>2015-07-03T20:08:38.145Z</CreationDate></Bucket><Bucket><Name>processResults</Name><CreationDate>2015-07-18T04:18:34.456Z</CreationDate></Bucket><Bucket><Name>saiisawesome</Name><CreationDate>2015-02-03T23:32:29.267Z</CreationDate></Bucket><Bucket><Name>sat-hadoop</Name><CreationDate>2015-02-17T00:03:18.350Z</CreationDate></Bucket><Bucket><Name>sat-jobs</Name><CreationDate>2015-04-24T18:00:04.513Z</CreationDate></Bucket><Bucket><Name>scheduler</Name><CreationDate>2015-04-27T18:23:17.527Z</CreationDate></Bucket><Bucket><Name>ubuntu</Name><CreationDate>2014-11-23T01:13:10.266Z</CreationDate></Bucket><Bucket><Name>ubuntu-14-04-2-base</Name><CreationDate>2015-06-23T04:10:49.415Z</CreationDate></Bucket><Bucket><Name>ubuntu1204</Name><CreationDate>2014-12-08T04:37:37.407Z</CreationDate></Bucket><Bucket><Name>ubuntu1204-ebs</Name><CreationDate>2014-12-08T04:45:08.751Z</CreationDate></Bucket><Bucket><Name>vagrant-builds</Name><CreationDate>2015-06-06T05:57:02.774Z</CreationDate></Bucket></Buckets></ListAllMyBucketsResult>', 'list': [{'CreationDate': '2014-12-08T04:45:32.833Z', 'Name': '1c41c0-download-manifests'}, {'CreationDate': '2015-04-15T17:54:53.081Z', 'Name': 'base-image'}, {'CreationDate': '2015-05-03T02:45:05.044Z', 'Name': 'benchmarking'}, {'CreationDate': '2014-11-10T06:12:21.646Z', 'Name': 'centos-6'}, {'CreationDate': '2015-04-10T17:27:33.508Z', 'Name': 'centos-7-base'}, {'CreationDate': '2014-12-08T04:27:42.621Z', 'Name': 'fedora'}, {'CreationDate': '2014-12-08T04:10:57.959Z', 'Name': 'ghostimages2'}, {'CreationDate': '2015-06-08T16:13:09.997Z', 'Name': 'hadoop'}, {'CreationDate': '2015-05-01T16:54:51.529Z', 'Name': 'hadoop-master'}, {'CreationDate': '2015-04-21T21:17:03.508Z', 'Name': 'hadoop-slave'}, {'CreationDate': '2015-02-03T23:31:11.176Z', 'Name': 'hadoopbaseimage'}, {'CreationDate': '2015-02-03T23:31:40.169Z', 'Name': 'hadoopimage'}, {'CreationDate': '2015-04-17T23:10:10.722Z', 'Name': 'hadoopnode'}, {'CreationDate': '2014-11-10T0ERROR:__main__:Exception on /listall [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "s3cmd1.py", line 2156, in getAllBuckets
+    return Response(stream_with_context(req.iter_content()),content_type = req.headers['content-type'])
+AttributeError: 'dict' object has no attribute 'iter_content'
