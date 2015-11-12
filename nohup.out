@@ -487,3 +487,315 @@ Traceback (most recent call last):
   File "s3cmd1.py", line 2156, in getAllBuckets
     return Response(stream_with_context(req.iter_content()),content_type = req.headers['content-type'])
 AttributeError: 'dict' object has no attribute 'iter_content'
+ERROR:root:Missing command. Please run with --help for more information.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    An unexpected error has occurred.
+  Please report the following lines to:
+   s3tools-bugs@lists.sourceforge.net
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Problem: IndexError: pop from empty list
+S3cmd:   1.5.0-alpha3
+
+Traceback (most recent call last):
+  File "s3cmd1.py", line 2112, in <module>
+    main()
+  File "s3cmd1.py", line 2036, in main
+    command = args.pop(0)
+IndexError: pop from empty list
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    An unexpected error has occurred.
+    Please report the above lines to:
+   s3tools-bugs@lists.sourceforge.net
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+2014-12-08 04:45  s3://1c41c0-download-manifests
+2015-04-15 17:54  s3://base-image
+2015-05-03 02:45  s3://benchmarking
+2014-11-10 06:12  s3://centos-6
+2015-04-10 17:27  s3://centos-7-base
+2014-12-08 04:27  s3://fedora
+2014-12-08 04:10  s3://ghostimages2
+2015-06-08 16:13  s3://hadoop
+2015-05-01 16:54  s3://hadoop-master
+2015-04-21 21:17  s3://hadoop-slave
+2015-02-03 23:31  s3://hadoopbaseimage
+2015-02-03 23:31  s3://hadoopimage
+2015-04-17 23:10  s3://hadoopnode
+2014-11-10 02:57  s3://imaging-worker-v1
+2015-07-05 23:55  s3://jobsTest
+2014-11-10 02:42  s3://loadbalancer-v1
+2015-04-15 02:51  s3://mod-ubuntu
+2015-07-03 20:08  s3://myBucket
+2015-07-18 04:18  s3://processResults
+2015-02-03 23:32  s3://saiisawesome
+2015-02-17 00:03  s3://sat-hadoop
+2015-04-24 18:00  s3://sat-jobs
+2015-04-27 18:23  s3://scheduler
+2014-11-23 01:13  s3://ubuntu
+2015-06-23 04:10  s3://ubuntu-14-04-2-base
+2014-12-08 04:37  s3://ubuntu1204
+2014-12-08 04:45  s3://ubuntu1204-ebs
+2015-06-06 05:57  s3://vagrant-builds
+WARNING:root:Module python-magic is not available. Guessing MIME types based on file extensions.
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+java_tutorial.pdf
+0
+The uploaded file is java_tutorial.pdf
+arugment s pringint
+[u'java_tutorial.pdf', <FileStorage: u'java_tutorial.pdf' ('application/pdf')>, 's3://sat-hadoop/']
+popping 1
+s3://sat-hadoop/
+[u'java_tutorial.pdf', <FileStorage: u'java_tutorial.pdf' ('application/pdf')>]
+we are here
+[<FileStorage: u'java_tutorial.pdf' ('application/pdf')>]
+<FileStorage: u'java_tutorial.pdf' ('application/pdf')>
+printing the list
+{u'java_tutorial.pdf': {}}
+uri_final is 
+s3://sat-hadoop/java_tutorial.pdf
+trying to kick add
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+done kicking ass
+Setting the content length : 0
+PUT
+{'bucket': None, 'uri': '/services/Walrus/sat-hadoop/java_tutorial.pdf'}
+{'content-length': 0, 'content-type': 'application/pdf', 'Authorization': 'AWS AKITLRS5SSGOEWFTDYYI:DAbNqy/Ezi6VK1lyPwR00H7xERI=', 'x-amz-date': 'Thu, 12 Nov 2015 03:29:35 +0000', 'content-encoding': 'UTF-8'}
+File size is  0
+ I am inb here
+java_tutorial.pdf -> s3://sat-hadoop/java_tutorial.pdf  [1 of 0]
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+ Trying to print header
+Authorization : AWS AKITLRS5SSGOEWFTDYYI:DAbNqy/Ezi6VK1lyPwR00H7xERI=
+ Trying to print header
+content-encoding : UTF-8
+ Trying to print header
+content-length : 3528893
+ Trying to print header
+content-type : application/pdf
+ Trying to print header
+x-amz-date : Thu, 12 Nov 2015 03:29:35 +0000
+       0 of 3528893     0% in    0s     0.00 B/s  failed
+WARNING:root:Upload failed: /services/Walrus/sat-hadoop/java_tutorial.pdf ([Errno 32] Broken pipe)
+WARNING:root:Retrying on lower speed (throttle=0.00)
+WARNING:root:Waiting 3 sec...
+PUT
+{'bucket': None, 'uri': '/services/Walrus/sat-hadoop/java_tutorial.pdf'}
+{'content-length': 3528893, 'content-type': 'application/pdf', 'Authorization': 'AWS AKITLRS5SSGOEWFTDYYI:yqHLT2M0Lp58D0jp8nIuWEFqH6k=', 'x-amz-date': 'Thu, 12 Nov 2015 03:29:38 +0000', 'content-encoding': 'UTF-8'}
+File size is  0
+ I am inb here
+java_tutorial.pdf -> s3://sat-hadoop/java_tutorial.pdf  [1 of 0]
+['__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parse_content_type', 'close', 'content_length', 'content_type', 'filename', 'headers', 'mimetype', 'mimetype_params', 'name', 'save', 'stream']
+ Trying to print header
+Authorization : AWS AKITLRS5SSGOEWFTDYYI:yqHLT2M0Lp58D0jp8nIuWEFqH6k=
+ Trying to print header
+content-encoding : UTF-8
+ Trying to print header
+content-length : 0
+ Trying to print header
+content-type : application/pdf
+ Trying to print header
+x-amz-date : Thu, 12 Nov 2015 03:29:38 +0000
+{'status': 200, 'headers': {'date': 'Thu, 12 Nov 2015 03:29:40 GMT', 'content-length': '0', 'etag': '"d41d8cd98f00b204e9800998ecf8427e"', 'x-amz-request-id': '615e851c-b9d2-4e6b-b9e7-b6aa3d7e49dc'}, 'reason': 'OK', 'data': '', 'size': 0}
+ 0 of 0     0% in    2s     0.00 B/s 0 of 0     0% in    2s     0.00 B/s  done
+getting object
+java_tutorial.pdf
+s3://sat-hadoop/java_tutorial.pdf -> haha  [1 of 1]
+{'status': 200, 'headers': {'content-length': '0', 'last-modified': 'Thu, 12 Nov 2015 03:29:40 GMT', 'etag': '"d41d8cd98f00b204e9800998ecf8427e"', 'x-amz-request-id': 'e4807011-b49d-48b9-8487-09543110616f', 'date': 'Thu, 12 Nov 2015 03:30:41 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185ae66ef0>}
+Printing response {'status': 200, 'headers': {'content-length': '0', 'last-modified': 'Thu, 12 Nov 2015 03:29:40 GMT', 'etag': '"d41d8cd98f00b204e9800998ecf8427e"', 'x-amz-request-id': 'e4807011-b49d-48b9-8487-09543110616f', 'date': 'Thu, 12 Nov 2015 03:30:41 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185ae66ef0>}
+<httplib.HTTPResponse instance at 0x7f185ae66ef0>
+I am in
+I am here
+                       DIR   s3://sat-hadoop//
+WARNING:root:Retrying failed request: /services/Walrus/sat-hadoop?delimiter=/ ('')
+WARNING:root:Waiting 3 sec...
+I am in
+I am here
+                       DIR   s3://sat-hadoop//
+getting object
+java_tutorial.pdf
+s3://sat-hadoop/java_tutorial.pdf -> haha  [1 of 1]
+ 0 of 0     0% in    0s     0.00 B/s  failed
+WARNING:root:Retrying failed request: /services/Walrus/sat-hadoop/java_tutorial.pdf ('')
+WARNING:root:Waiting 3 sec...
+s3://sat-hadoop/java_tutorial.pdf -> haha  [1 of 1]
+{'status': 200, 'headers': {'content-length': '0', 'last-modified': 'Thu, 12 Nov 2015 03:29:40 GMT', 'etag': '"d41d8cd98f00b204e9800998ecf8427e"', 'x-amz-request-id': 'f0fdf9b8-3bda-4a75-a4ae-0bee27d9e6bb', 'date': 'Thu, 12 Nov 2015 19:34:43 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5b4cf8>}
+Printing response {'status': 200, 'headers': {'content-length': '0', 'last-modified': 'Thu, 12 Nov 2015 03:29:40 GMT', 'etag': '"d41d8cd98f00b204e9800998ecf8427e"', 'x-amz-request-id': 'f0fdf9b8-3bda-4a75-a4ae-0bee27d9e6bb', 'date': 'Thu, 12 Nov 2015 19:34:43 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5b4cf8>}
+<httplib.HTTPResponse instance at 0x7f185a5b4cf8>
+getting object
+sample
+s3://sat-hadoop/sample -> haha  [1 of 1]
+{'status': 200, 'headers': {'content-length': '65', 'last-modified': 'Thu, 13 Aug 2015 00:37:31 GMT', 'etag': '"577fdd6cdb8f6cb95f398f057c532cca"', 'x-amz-request-id': '9434d0be-8e13-4697-92cb-56b6cb709d50', 'date': 'Thu, 12 Nov 2015 19:35:25 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5b4e60>}
+Printing response {'status': 200, 'headers': {'content-length': '65', 'last-modified': 'Thu, 13 Aug 2015 00:37:31 GMT', 'etag': '"577fdd6cdb8f6cb95f398f057c532cca"', 'x-amz-request-id': '9434d0be-8e13-4697-92cb-56b6cb709d50', 'date': 'Thu, 12 Nov 2015 19:35:25 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5b4e60>}
+<httplib.HTTPResponse instance at 0x7f185a5b4e60>
+getting object
+311_5minutes.avi
+s3://sat-hadoop/311_5minutes.avi -> haha  [1 of 1]
+{'status': 200, 'headers': {'content-length': '27453104', 'last-modified': 'Tue, 10 Nov 2015 04:23:48 GMT', 'etag': '"520fbedb097f0771b78c402a526b1691"', 'x-amz-request-id': '91772453-aec6-4a12-8fd7-61bff62a310d', 'date': 'Thu, 12 Nov 2015 19:35:58 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5bb128>}
+Printing response {'status': 200, 'headers': {'content-length': '27453104', 'last-modified': 'Tue, 10 Nov 2015 04:23:48 GMT', 'etag': '"520fbedb097f0771b78c402a526b1691"', 'x-amz-request-id': '91772453-aec6-4a12-8fd7-61bff62a310d', 'date': 'Thu, 12 Nov 2015 19:35:58 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5bb128>}
+<httplib.HTTPResponse instance at 0x7f185a5bb128>
+getting object
+index2.mp4
+s3://sat-hadoop/index2.mp4 -> haha  [1 of 1]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 651, in __init__
+    self.finish()
+  File "/usr/lib/python2.7/SocketServer.py", line 710, in finish
+    self.wfile.close()
+  File "/usr/lib/python2.7/socket.py", line 279, in close
+    self.flush()
+  File "/usr/lib/python2.7/socket.py", line 303, in flush
+    self._sock.sendall(view[write_offset:write_offset+buffer_size])
+timeout: timed out
+{'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': '898ddc41-d081-4cc8-bebe-25b6e7e75f0b', 'date': 'Thu, 12 Nov 2015 20:19:43 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5bc128>}
+Printing response {'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': '898ddc41-d081-4cc8-bebe-25b6e7e75f0b', 'date': 'Thu, 12 Nov 2015 20:19:43 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5bc128>}
+<httplib.HTTPResponse instance at 0x7f185a5bc128>
+----------------------------------------
+Exception happened during processing of request from ('131.228.197.23', 28424)
+----------------------------------------
+getting object
+index2.mp4
+s3://sat-hadoop/index2.mp4 -> haha  [1 of 1]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 651, in __init__
+    self.finish()
+  File "/usr/lib/python2.7/SocketServer.py", line 710, in finish
+    self.wfile.close()
+  File "/usr/lib/python2.7/socket.py", line 279, in close
+    self.flush()
+  File "/usr/lib/python2.7/socket.py", line 303, in flush
+    self._sock.sendall(view[write_offset:write_offset+buffer_size])
+error: [Errno 32] Broken pipe
+{'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': 'd2b946a8-b82c-4485-b04c-620dc4b0c237', 'date': 'Thu, 12 Nov 2015 20:37:02 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5d0560>}
+Printing response {'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': 'd2b946a8-b82c-4485-b04c-620dc4b0c237', 'date': 'Thu, 12 Nov 2015 20:37:02 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5d0560>}
+<httplib.HTTPResponse instance at 0x7f185a5d0560>
+----------------------------------------
+Exception happened during processing of request from ('131.228.197.23', 5669)
+----------------------------------------
+getting object
+index2.mp4
+s3://sat-hadoop/index2.mp4 -> haha  [1 of 1]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 651, in __init__
+    self.finish()
+  File "/usr/lib/python2.7/SocketServer.py", line 710, in finish
+    self.wfile.close()
+  File "/usr/lib/python2.7/socket.py", line 279, in close
+    self.flush()
+  File "/usr/lib/python2.7/socket.py", line 303, in flush
+    self._sock.sendall(view[write_offset:write_offset+buffer_size])
+error: [Errno 32] Broken pipe
+{'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': 'bb76c199-97b3-4222-ad9e-bc11f04196ae', 'date': 'Thu, 12 Nov 2015 20:38:15 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5d0710>}
+Printing response {'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': 'bb76c199-97b3-4222-ad9e-bc11f04196ae', 'date': 'Thu, 12 Nov 2015 20:38:15 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5d0710>}
+<httplib.HTTPResponse instance at 0x7f185a5d0710>
+----------------------------------------
+Exception happened during processing of request from ('131.228.197.23', 28529)
+----------------------------------------
+getting object
+index2.mp4
+s3://sat-hadoop/index2.mp4 -> haha  [1 of 1]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 651, in __init__
+    self.finish()
+  File "/usr/lib/python2.7/SocketServer.py", line 710, in finish
+    self.wfile.close()
+  File "/usr/lib/python2.7/socket.py", line 279, in close
+    self.flush()
+  File "/usr/lib/python2.7/socket.py", line 303, in flush
+    self._sock.sendall(view[write_offset:write_offset+buffer_size])
+error: [Errno 32] Broken pipe
+{'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': '444be949-f2d7-4cb2-b1b7-bf75f56d13f1', 'date': 'Thu, 12 Nov 2015 20:38:23 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5d0680>}
+Printing response {'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': '444be949-f2d7-4cb2-b1b7-bf75f56d13f1', 'date': 'Thu, 12 Nov 2015 20:38:23 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5d0680>}
+<httplib.HTTPResponse instance at 0x7f185a5d0680>
+----------------------------------------
+Exception happened during processing of request from ('131.228.197.23', 1995)
+----------------------------------------
+getting object
+index2.mp4
+s3://sat-hadoop/index2.mp4 -> haha  [1 of 1]
+{'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': 'aaffc326-8cca-4ab7-bd82-8741b2d3223d', 'date': 'Thu, 12 Nov 2015 20:39:05 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5d0710>}
+Printing response {'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': 'aaffc326-8cca-4ab7-bd82-8741b2d3223d', 'date': 'Thu, 12 Nov 2015 20:39:05 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5d0710>}
+<httplib.HTTPResponse instance at 0x7f185a5d0710>
+I am in
+I am here
+getting object
+index2.mp4
+s3://sat-hadoop/index2.mp4 -> haha  [1 of 1]
+                       DIR   s3://sat-hadoop//
+WARNING:root:Retrying failed request: /services/Walrus/sat-hadoop?delimiter=/ ('')
+WARNING:root:Waiting 3 sec...
+{'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': 'ba693bea-428a-400c-a72b-fd7c670acea6', 'date': 'Thu, 12 Nov 2015 20:44:18 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5a35f0>}
+Printing response {'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': 'ba693bea-428a-400c-a72b-fd7c670acea6', 'date': 'Thu, 12 Nov 2015 20:44:18 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a5a35f0>}
+<httplib.HTTPResponse instance at 0x7f185a5a35f0>
+I am in
+I am here
+getting object
+index2.mp4
+s3://sat-hadoop/index2.mp4 -> haha  [1 of 1]
+{'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': '7c4f8b37-77ed-4deb-8a7b-78db2668a54a', 'date': 'Thu, 12 Nov 2015 20:45:30 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a4af2d8>}
+Printing response {'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': '7c4f8b37-77ed-4deb-8a7b-78db2668a54a', 'date': 'Thu, 12 Nov 2015 20:45:30 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a4af2d8>}
+<httplib.HTTPResponse instance at 0x7f185a4af2d8>
+                       DIR   s3://sat-hadoop//
+I am in
+I am here
+getting object
+index2.mp4
+s3://sat-hadoop/index2.mp4 -> haha  [1 of 1]
+                       DIR   s3://sat-hadoop//
+WARNING:root:Retrying failed request: /services/Walrus/sat-hadoop?delimiter=/ ('')
+WARNING:root:Waiting 3 sec...
+{'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': '1727ca9d-147f-4450-925b-d2f19ecfe24b', 'date': 'Thu, 12 Nov 2015 20:45:51 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a4afcf8>}
+Printing response {'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': '1727ca9d-147f-4450-925b-d2f19ecfe24b', 'date': 'Thu, 12 Nov 2015 20:45:51 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a4afcf8>}
+<httplib.HTTPResponse instance at 0x7f185a4afcf8>
+I am in
+I am here
+                       DIR   s3://sat-hadoop//
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 651, in __init__
+    self.finish()
+  File "/usr/lib/python2.7/SocketServer.py", line 710, in finish
+    self.wfile.close()
+  File "/usr/lib/python2.7/socket.py", line 279, in close
+    self.flush()
+  File "/usr/lib/python2.7/socket.py", line 303, in flush
+    self._sock.sendall(view[write_offset:write_offset+buffer_size])
+error: [Errno 32] Broken pipe
+----------------------------------------
+Exception happened during processing of request from ('131.228.197.23', 9810)
+----------------------------------------
+I am in
+I am here
+getting object
+index2.mp4
+s3://sat-hadoop/index2.mp4 -> haha  [1 of 1]
+                       DIR   s3://sat-hadoop//
+{'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': 'ed41a8c3-2587-4864-9a97-66ef5a1062e9', 'date': 'Thu, 12 Nov 2015 20:55:41 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a4a6b00>}
+Printing response {'status': 200, 'headers': {'content-length': '7961963', 'last-modified': 'Wed, 11 Nov 2015 01:49:04 GMT', 'etag': '"0ef56154ff19e2ca45a84352e30dc0e8"', 'x-amz-request-id': 'ed41a8c3-2587-4864-9a97-66ef5a1062e9', 'date': 'Thu, 12 Nov 2015 20:55:41 GMT', 'content-type': 'application/octet-stream'}, 'reason': 'OK', 'data': <httplib.HTTPResponse instance at 0x7f185a4a6b00>}
+<httplib.HTTPResponse instance at 0x7f185a4a6b00>
+I am in
+I am here
+                       DIR   s3://sat-hadoop//
+I am in
+I am here
+                       DIR   s3://sat-hadoop//

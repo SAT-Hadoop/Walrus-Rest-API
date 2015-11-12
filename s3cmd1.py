@@ -2136,23 +2136,57 @@ if __name__ == '__main__':
 cmd_ls("ls")
 
 
-from flask import Flask
+from flask import Flask,json,jsonify
 from flask import Response, render_template, request, redirect, url_for, send_from_directory
-
+from flask.ext.responses import json_response, xml_response, auto_response
 from flask import stream_with_context
 app = Flask(__name__)
+
+
+
+import json
+from functools import wraps
+from flask import redirect, request, current_app
+
+def support_jsonp(f):
+    """Wraps JSONified output for JSONP"""
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        callback = request.args.get('callback', False)
+        if callback:
+            content = str(callback) + '(' + str(f().data) + ')'
+            return current_app.response_class(content, mimetype='application/json')
+        else:
+            return f(*args, **kwargs)
+    return decorated_function
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
 
 
 @app.route('/listall')
+#@support_jsonp
 def getAllBuckets():
         print "I am in"
 	args = []
 	args.append("s3://sat-hadoop")
 	print "I am here"
-	return str(cmd_ls(args)) 
+	data = str(cmd_ls(args))
+	#print data
+	if not request.args.get('callback'):
+		return "{'data': "+data+"}"
+	else:
+		return "callback({'data': "+data+"})"
+	#return "%s({'a':1, 'b':2 })" % _GET_PARAMS('callback')
+	#callback = request.args.get('callback')
+	#return '{0}({1})'.format(callback, {'a':1, 'b':2})
+
+	#return jsonify({"foo":"bar"})
+	#return json_response({'data' : 'data'}, status_code=200)
+	#return json.dumps({'success':True, 'data' : str(cmd_ls(args))}), 200, {'ContentType':'application/json'} 
+	#return str(cmd_ls(args)) 
 	#print req
         #return Response(stream_with_context(req.iter_content()),content_type = req.headers['content-type'])
 
@@ -2176,7 +2210,7 @@ def getObject():
 			yield chunks
 	#return "downloading"
 	#return Response(stream_with_context(generate()),mimetype="text/plain",headers={"Content-Disposition":"attachment;filename=test.txt"})
-	return Response(stream_with_context(generate()),headers ={'Connection': 'keep-alive',"Content-Disposition":"attachment;filename="+objectname})
+	return Response(stream_with_context(generate()),headers ={'Connection': 'keep-alive',"Content-Disposition":"attachment;filename="+objectname}),200
 @app.route('/streamobject')
 def streamObject():
         print "getting object"
